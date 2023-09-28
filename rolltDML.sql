@@ -1,5 +1,5 @@
 -- database: rollt.db
-CREATE TABLE "Riders"(
+CREATE TABLE "Rider"(
 	rider_id INTEGER PRIMARY KEY,
   first_name VARCHAR(20),
   last_initial CHAR(1),
@@ -9,4 +9,8 @@ CREATE TABLE "Riders"(
 	arrival_locY REAL,
 	safety_coef REAL,
 	user_rating REAL DEFAULT 3.0
+);
+
+CREATE TABLE "Driver"(
+  driver
 )
