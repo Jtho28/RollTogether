@@ -61,6 +61,12 @@ class Rider:
         return self.__str__()
 
 
+class Driver():
+    def __init__(self, rider: Rider, Vehicles: list[Vehicle]):
+
+
+class Vehicle():
+
 class GroupRide:
     def __init__(self, group: list[Rider]):
         self.group = group
