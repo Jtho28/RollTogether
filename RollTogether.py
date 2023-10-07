@@ -1,113 +1,39 @@
-from datetime import datetime
-import networkx as nx
-import matplotlib.pyplot as plt
-import sqlite3
+from flask import Flask
+from flask import url_for
+from markupsafe import escape
+from flask import request
+from flask import render_template
 
-class Rider:
-    def __init__(self, first_name:str, last_initial:str, 
-                departure_locX:float, departure_locY:float,
-                arrival_locX:float, arrival_locY:float):
-        
-        if (departure_locX > 180 or departure_locX < -180 or
-            departure_locY < -90 or departure_locY > 90):
-            print("Invalid departure location :(")
-            raise CoordError("Invalid departure coordinates provided")
-        else:
-            self.departure_locX = departure_locX
-            self.departure_locY = departure_locY
+@app.route('/')
+def index():
+    return 'index'
 
-        if (arrival_locX > 180 or departure_locX < -180 or
-            arrival_locY < -90 or arrival_locY > 90):
-            print("Invalid arrival location")
-            raise CoordError("invalid arrival coordinates provided")
-        else:
-            self.arrival_locX = arrival_locX
-            self.arrival_locY = arrival_locY
+@app.route('/hello/')
+@app.route('/hello/<name>')
+def hello(name=None):
+  return render_template('hello.html', name=name)
 
-        self.safety_coef = 3.0
-        self.user_rating = 3.0
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+      return "FART"
+    else:
+      return "EPIC"
 
-        self.first_name = first_name
-        self.last_initial = last_initial
+# @app.get('/login')
+# def login_get():
+#     return show_the_login_form()
 
-        conn = sqlite3.connect('rollt.db')
-        cursor = conn.cursor()
-        cursor.execute('''
-                SELECT MAX(rider_id)
-                FROM Riders
-                GROUP BY rider_id''')
-        
+# @app.post('/login')
+# def login_post():
+#     return do_the_login()
 
-        if cursor.fetchone() is None:
-            self.rider_id = 0
-        else:
-            self.rider_id = cursor.fetchone()[0] + 1
+@app.route('/user/<username>')
+def profile(username):
+    return f'{username}\'s profile'
 
-
-        cursor.execute(f'''INSERT OR IGNORE INTO Riders
-                     VALUES ({self.rider_id}, "{self.first_name}",
-                            "{self.last_initial}", {self.departure_locX},
-                            {self.departure_locY}, {self.arrival_locX},
-                            {self.arrival_locY}, {self.safety_coef}, {self.user_rating})''')
-
-        conn.commit()
-        conn.close()
-
-
-    def __str__(self):
-        return f'{self.dep}'
-
-    def __repr__(self):
-        return self.__str__()
-
-
-class Driver():
-    def __init__(self, rider: Rider, Vehicles: list[Vehicle]):
-
-
-class Vehicle():
-
-class GroupRide:
-    def __init__(self, group: list[Rider]):
-        self.group = group
-
-
-class Group:
-    def __init__(self, users: list[Rider]):
-        self.users = users
-
-def resolve(users: Group):
-
-    G = nx.Graph()
-
-    G.add_nodes_from(users.users)
-
-    nx.draw(G, with_labels=True)
-    plt.savefig("epic.png")
-    plt.show()
-
-def setup_db():
-    # Create table 
-    conn = sqlite3.connect('rollt.db')
-    cursor = conn.cursor()
-
-    fd = open('./rolltDML.sql', 'r')
-    sql_DML = fd.read()
-    fd.close()
-
-    # Execute DML
-    cursor.executescript(sql_DML)
-    
-    # Commit changes
-    conn.commit()
-
-    # Close connection
-    conn.close()
-
-def main():
-    test_user = Rider("Jackson", "M", 50.00,
-                       50.0, 50.0, 50.0)
-                       
-
-if __name__=="__main__":
-    main()
+with app.test_request_context():
+    print(url_for('index'))
+    print(url_for('login'))
+    print(url_for('login', next='/'))
+    print(url_for('profile', username='John Doe'))
