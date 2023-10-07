@@ -9,6 +9,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.schema import CheckConstraint
 import os
 
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///rollt.db'
 app.config['SECRET_KEY'] = os.getenv('FLASK_SECRET_KEY')
@@ -70,22 +71,18 @@ class RideRequest(db.Model):
   )
 
 # class DriveOffer():
-def init():
-  with app.app_context():
-    db.create_all()
 
-  admin.add_view(ModelView(Rider, db.session))
-  admin.add_view(ModelView(Driver, db.session))
-  admin.add_view(ModelView(DriverVehicles, db.session))
-  admin.add_view(ModelView(RideRequest, db.session))
+with app.app_context():
+  db.create_all()
+
+admin.add_view(ModelView(Rider, db.session))
+admin.add_view(ModelView(Driver, db.session))
+admin.add_view(ModelView(DriverVehicles, db.session))
+admin.add_view(ModelView(RideRequest, db.session))
 
 @app.route('/')
 def index():
   return render_template('index.html')
   
   
-
-if __name__ == "__main__":
-  init()
-
-  app.run(debug=True)
+app.run(debug=True)
