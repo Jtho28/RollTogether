@@ -70,13 +70,14 @@ class RideRequest(db.Model):
   )
 
 # class DriveOffer():
-with app.app_context():
-  db.create_all()
+def init():
+  with app.app_context():
+    db.create_all()
 
-admin.add_view(ModelView(Rider, db.session))
-admin.add_view(ModelView(Driver, db.session))
-admin.add_view(ModelView(DriverVehicles, db.session))
-admin.add_view(ModelView(RideRequest, db.session))
+  admin.add_view(ModelView(Rider, db.session))
+  admin.add_view(ModelView(Driver, db.session))
+  admin.add_view(ModelView(DriverVehicles, db.session))
+  admin.add_view(ModelView(RideRequest, db.session))
 
 @app.route('/')
 def index():
@@ -85,6 +86,6 @@ def index():
   
 
 if __name__ == "__main__":
-    
+  init()
 
   app.run(debug=True)
