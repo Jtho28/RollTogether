@@ -5,6 +5,7 @@ from flask import request
 from flask import render_template
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
+from flask_admin.form import Select2Widget
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.schema import CheckConstraint
 import os
@@ -14,9 +15,11 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///rollt.db'
 app.config['SECRET_KEY'] = os.getenv('FLASK_SECRET_KEY')
 db = SQLAlchemy(app)
-admin = Admin(app)
+admin = Admin(app, name='RollTogether')
 
 class Rider(db.Model):
+  __tablename__ = "rider"
+
   rider_id = db.Column(db.Integer, primary_key=True)
   first_name = db.Column(db.String(80), nullable=False)
   last_initial = db.Column(db.String(4), nullable=False)
@@ -32,6 +35,8 @@ class Rider(db.Model):
     return '<%r>' % self.first_name + self.last_initial
 
 class Driver(db.Model):
+  __tablename__ = "driver"
+
   driver_id = db.Column(db.Integer, primary_key=True)
   rider_id = db.Column(db.Integer, db.ForeignKey('rider.rider_id'), nullable=False, unique=True)
   driver_rating = db.Column(db.Integer, nullable = True)
@@ -70,19 +75,52 @@ class RideRequest(db.Model):
     CheckConstraint('departure_locY>=-90.00 AND departure_locY<=90 AND arrival_locY>=-90.00 AND arrival_locY<=90.00')
   )
 
+class RidePost(db.Model):
+  r_post_id = db.Column(db.Integer, primary_key=True)
+  driver_id = db.Column(db.Integer, db.ForeignKey('driver.driver_id'))
+  current_locX = db.Column(db.Float, nullable=False)
+  current_locY = db.Column(db.Float, nullable=False)
+  arrival_locX = db.Column(db.Float, nullable=False)
+  arrival_locY = db.Column(db.Float, nullable=False)
+  post_time = db.Column(db.DateTime, nullable=False)
+  __table_args__ = (
+    CheckConstraint('current_locX>=-180.00 AND current_locX<=180.00 AND arrival_locX>=-180.00 AND arrival_locX<=180.00'),
+    CheckConstraint('current_locY>=-90.00 AND current_locY<=90 AND arrival_locY>=-90.00 AND arrival_locY<=90.00')
+  )
+
 # class DriveOffer():
+
+class DriverModelView(ModelView):
+  column_display_pk = True
+  form_columns = ('rider_id', 'driver_rating')
+
+class RiderModelView(ModelView):
+  column_display_pk = True
+  form_columns = ('first_name', 'last_initial', 'safety_coef', 'rider_rating')
+
+class VehiclesModelView(ModelView):
+  column_display_pk = True
+  form_columns = ('vin_num', 'plate_num', 'driver_id', 'model', 'make', 'num_seats', 'year', 'miles')
 
 with app.app_context():
   db.create_all()
 
-admin.add_view(ModelView(Rider, db.session))
-admin.add_view(ModelView(Driver, db.session))
-admin.add_view(ModelView(DriverVehicles, db.session))
+admin.add_view(RiderModelView(Rider, db.session))
+admin.add_view(DriverModelView(Driver, db.session))
+admin.add_view(VehiclesModelView(DriverVehicles, db.session))
 admin.add_view(ModelView(RideRequest, db.session))
+admin.add_view(ModelView(RidePost, db.session))
 
-@app.route('/')
-def index():
-  return render_template('index.html')
-  
-  
-app.run(debug=True)
+@app.route('/requests')
+def ride_requests():
+  ride_requests = RideRequest.query.all()
+  return render_template('ride_requests.html', ride_requests=ride_requests)
+
+@app.route('/drives')
+def ride_posts():
+  ride_posts = RidePost.query.all()
+  return render_template('ride_posts.html', ride_posts=ride_posts)
+
+
+  # app.run(debug=True)
+

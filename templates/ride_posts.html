@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+    <title>Rides</title>
+  </head>
+  <body>
+    <h1>Rides</h1>
+    {% for ride in ride_posts %}
+      <div class="ride">
+        <p>Post ID: {{ ride.r_post_id }}</p>
+        <p>Driver ID: {{ ride.driver_id }}</p>
+        <p>Current Location: ({{ ride.current_locX }}, {{ ride.current_locY }})</p>
+        <p>Arrival Location: ({{ ride.arrival_locX }}, {{ ride.arrival_locY }})</p>
+        <p>Post Time: {{ ride.post_time }}</p> 
+      </div>
+    {% endfor %}
+  </body>
+  </html>

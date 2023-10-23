@@ -1,0 +1,21 @@
+<!DOCTYPE html>                                                           
+    <html>                                                                    
+    <head>                                                                    
+      <title>Ride Requests</title>                                            
+    </head>                                                                   
+    <body>                                                                    
+      <h1>Ride Requests</h1>                                                  
+      {% for request in ride_requests %}                                      
+        <div class="request">                                                 
+          <p>Request ID: {{ request.r_req_id }}</p>                           
+          <p>Rider ID: {{ request.rider_id }}</p>                             
+          <p>Departure Location: ({{ request.departure_locX }}, {{            
+  request.departure_locY }})</p>                                              
+          <p>Arrival Location: ({{ request.arrival_locX }}, {{                
+  request.arrival_locY }})</p>                                                
+          <p>Request Time: {{ request.request_time }}</p>                     
+          <p>Pick-up By: {{ request.pick_up_by }}</p>                         
+        </div>                                                                
+      {% endfor %}                                                            
+    </body>                                                                   
+    </html> 
