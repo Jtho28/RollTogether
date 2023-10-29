@@ -1,8 +1,8 @@
-from flask import Flask
-from flask import url_for
+from dataclasses import dataclass
+from flask import Flask, request, url_for, render_template, jsonify
+from flask_restful import Resource, Api
+from datetime import datetime
 from markupsafe import escape
-from flask import request
-from flask import render_template
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 from flask_admin.form import Select2Widget
@@ -34,6 +34,16 @@ class Rider(db.Model):
   def __repr__(self):
     return '<%r>' % self.first_name + self.last_initial
 
+  def serialize(self):
+    """Return object in json-friendly format"""
+    return {
+      'rider_id'    : self.rider_id,
+      'first_name'  : self.first_name,
+      'last_initial': self.last_initial,
+      'safety_coef' : self.safety_coef,
+      'rider_rating': self.rider_rating
+    }
+
 class Driver(db.Model):
   __tablename__ = "driver"
 
@@ -60,8 +70,17 @@ class DriverVehicles(db.Model):
   def __repr__(self):
     return '<%r>' % f"{self.driver_id}'s {self.year} {self.make} {self.model}"
 
-
+@dataclass
 class RideRequest(db.Model):
+  r_req_id: int
+  rider_id: int
+  departure_locX: float
+  departure_locY: float
+  arrival_locX: float
+  arrival_locY: float
+  request_time: datetime
+  pick_up_by: datetime
+
   r_req_id = db.Column(db.Integer, primary_key=True)
   rider_id = db.Column(db.Integer, db.ForeignKey('rider.rider_id'))
   departure_locX = db.Column(db.Float, nullable=False)
@@ -102,16 +121,25 @@ class VehiclesModelView(ModelView):
   column_display_pk = True
   form_columns = ('vin_num', 'plate_num', 'driver_id', 'model', 'make', 'num_seats', 'year', 'miles')
 
+class RideRequestModelView(ModelView):
+  column_display_pk = True
+  form_columns = ('rider_id', 'departure_locX', 'departure_locY', 'arrival_locX', 'arrival_locY', 
+                  'request_time', 'pick_up_by')
+
+class RidePostModelView(ModelView):
+  column_display_pk = True
+  form_columns = ('driver_id', 'current_locX', 'current_locY', 'arrival_locX', 'arrival_locY', 'post_time')
+
 with app.app_context():
   db.create_all()
 
 admin.add_view(RiderModelView(Rider, db.session))
 admin.add_view(DriverModelView(Driver, db.session))
 admin.add_view(VehiclesModelView(DriverVehicles, db.session))
-admin.add_view(ModelView(RideRequest, db.session))
-admin.add_view(ModelView(RidePost, db.session))
+admin.add_view(RideRequestModelView(RideRequest, db.session))
+admin.add_view(RidePostModelView(RidePost, db.session))
 
-@app.route('/requests')
+@app.route('/rides')
 def ride_requests():
   ride_requests = RideRequest.query.all()
   return render_template('ride_requests.html', ride_requests=ride_requests)
@@ -120,6 +148,16 @@ def ride_requests():
 def ride_posts():
   ride_posts = RidePost.query.all()
   return render_template('ride_posts.html', ride_posts=ride_posts)
+
+@app.route('/api/rides', methods=['GET'])
+def serve_rides():
+  if (request.method == 'GET'):
+
+    rides = RideRequest.query.all()
+    return jsonify(rides)
+
+class rideRequests(Resource):
+  def get
 
 
   # app.run(debug=True)
