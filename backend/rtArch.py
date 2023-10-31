@@ -94,7 +94,16 @@ class RideRequest(db.Model):
     CheckConstraint('departure_locY>=-90.00 AND departure_locY<=90 AND arrival_locY>=-90.00 AND arrival_locY<=90.00')
   )
 
+@dataclass
 class RidePost(db.Model):
+  r_post_id: int
+  driver_id: int
+  current_locX: float
+  current_locY: float
+  arrival_locX: float
+  arrival_locY: float
+  post_time: datetime
+
   r_post_id = db.Column(db.Integer, primary_key=True)
   driver_id = db.Column(db.Integer, db.ForeignKey('driver.driver_id'))
   current_locX = db.Column(db.Float, nullable=False)
@@ -106,6 +115,31 @@ class RidePost(db.Model):
     CheckConstraint('current_locX>=-180.00 AND current_locX<=180.00 AND arrival_locX>=-180.00 AND arrival_locX<=180.00'),
     CheckConstraint('current_locY>=-90.00 AND current_locY<=90 AND arrival_locY>=-90.00 AND arrival_locY<=90.00')
   )
+
+@dataclass
+class CommuteSchedule(db.Model):
+  cs_id: int
+  rider_id: int
+  departure_locX: float
+  departure_locY: float
+  arrival_locX: float
+  arrival_locY: float
+  departure_time: datetime
+  arrival_time: datetime
+
+  cs_id = db.Column(db.Integer, primary_key=True)
+  rider_id = db.Column(db.Integer, db.ForeignKey('rider.rider_id'))
+  departure_locX = db.Column(db.Float, nullable=False)
+  departure_locY = db.Column(db.Float, nullable=False)
+  arrival_locX = db.Column(db.Float, nullable=False)
+  arrival_locY = db.Column(db.Float, nullable=False)
+  departure_time = db.Column(db.DateTime, nullable=False)
+  arrival_time = db.Column(db.DateTime, nullable=False)
+  __table_args__ = (
+    CheckConstraint('departure_locX>=-180.00 AND departure_locX<=180.00 AND arrival_locX>=-180.00 AND arrival_locX<=180.00'),
+    CheckConstraint('departure_locY>=-90.00 AND departure_locY<=90 AND arrival_locY>=-90.00 AND arrival_locY<=90.00')
+  )
+
 
 # class DriveOffer():
 
@@ -130,6 +164,11 @@ class RidePostModelView(ModelView):
   column_display_pk = True
   form_columns = ('driver_id', 'current_locX', 'current_locY', 'arrival_locX', 'arrival_locY', 'post_time')
 
+class CommuteScheduleModelView(ModelView):
+  column_auto_select_related = True
+  column_display_pk = True
+  form_columns = ('rider_id', 'departure_locX', 'departure_locY', 'arrival_locX', 'arrival_locY', 'departure_time', 'arrival_time')
+
 with app.app_context():
   db.create_all()
 
@@ -138,6 +177,7 @@ admin.add_view(DriverModelView(Driver, db.session))
 admin.add_view(VehiclesModelView(DriverVehicles, db.session))
 admin.add_view(RideRequestModelView(RideRequest, db.session))
 admin.add_view(RidePostModelView(RidePost, db.session))
+admin.add_view(CommuteScheduleModelView(CommuteSchedule, db.session))
 
 @app.route('/rides')
 def ride_requests():
@@ -156,9 +196,34 @@ def serve_rides():
     rides = RideRequest.query.all()
     return jsonify(rides)
 
-class rideRequests(Resource):
-  def get
+@app.route('/api/schedules', methods=['POST', 'GET'])
+def schedule():
+  if (request.method == 'GET'):
+    schedules = CommuteSchedule.query.all()
+    return jsonify(schedules)
+
+  elif (request.method == 'POST'):
+    rider_id = request.form['rider_id']
+    departure_locX = request.form['departure_locX']
+    departure_locY = request.form['departure_locY']
+    arrival_locX = request.form['arrival_locX']
+    arrival_locY = request.form['arrival_locY']
+    departure_time = datetime.strptime(request.form['departure_time'], "%Y-%m-%dT%H:%M:%S")
+    arrival_time = datetime.strptime(request.form['arrival_time'], "%Y-%m-%dT%H:%M:%S")
+
+    schedule = CommuteSchedule(rider_id=rider_id, departure_locX=departure_locX,
+                               departure_locY=departure_locY, arrival_locX=arrival_locX,
+                               arrival_locY=arrival_locY, departure_time=departure_time,
+                               arrival_time=arrival_time)
+
+    db.session.add(schedule)
+    db.session.commit()
+
+    schedules = CommuteSchedule.query.all()
+    return jsonify(schedules)
+
+# class rideRequests(Resource):
+#   def get
 
 
   # app.run(debug=True)
-
