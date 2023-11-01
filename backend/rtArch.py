@@ -107,8 +107,8 @@ class RideRequest(db.Model):
   )
 
 @dataclass
-class RidePost(db.Model):
-  r_post_id: int
+class DrivePost(db.Model):
+  d_post_id: int
   driver_id: int
   current_locX: float
   current_locY: float
@@ -116,7 +116,7 @@ class RidePost(db.Model):
   arrival_locY: float
   post_time: datetime
 
-  r_post_id = db.Column(db.Integer, primary_key=True)
+  d_post_id = db.Column(db.Integer, primary_key=True)
   driver_id = db.Column(db.Integer, db.ForeignKey('driver.driver_id'))
   current_locX = db.Column(db.Float, nullable=False)
   current_locY = db.Column(db.Float, nullable=False)
@@ -188,7 +188,7 @@ admin.add_view(RiderModelView(Rider, db.session))
 admin.add_view(DriverModelView(Driver, db.session))
 admin.add_view(VehiclesModelView(DriverVehicles, db.session))
 admin.add_view(RideRequestModelView(RideRequest, db.session))
-admin.add_view(RidePostModelView(RidePost, db.session))
+admin.add_view(RidePostModelView(DrivePost, db.session))
 admin.add_view(CommuteScheduleModelView(CommuteSchedule, db.session))
 
 @app.route('/rides')
@@ -257,6 +257,52 @@ def serve_vehicles():
     db.session.commit()
 
     return jsonify(vehicle)
+
+@app.route('/api/ride_requests', methods=['POST', 'GET'])
+def serve_ride_requests():
+  if (request.method == 'GET'):
+    ride_requests = RideRequest.query.all()
+    return jsonify(ride_requests)
+
+  elif (request.method == 'POST'):
+    rider_id = request.form['rider_id']
+    departure_locX = request.form['departure_locX']
+    departure_locY = request.form['departure_locY']
+    arrival_locX = request.form['arrival_locX']
+    arrival_locY = request.form['arrival_locY']
+    request_time = request.form['request_time']
+    pick_up_by = request.form['pick_up_by']
+
+    ride_request = RideRequest(rider_id=rider_id, departure_locX=departure_locX,
+                               departure_locY=departure_locY, arrival_locX=arrival_locX,
+                               arrival_locY=arrival_locY, request_time=request_time,
+                               pick_up_by=pick_up_by)
+    db.session.add(ride_request)
+    db.session.commit()
+
+    return jsonify(ride_request)
+
+@app.route('/api/drive_posts', methods=['POST', 'GET'])
+def serve_drive_posts():
+  if (request.method == 'GET'):
+    drive_posts = DrivePost.query.all()
+    return jsonify(drive_posts)
+
+  elif (request.method == 'POST'):
+    driver_id = request.form['driver_id']
+    current_locX = request.form['current_locX']
+    current_locY = request.form['current_locY']
+    arrival_locX = request.form['arrival_locX']
+    arrival_locY = request.form['arrival_locY']
+    post_time = request.form['post_time']
+
+    drive_post = DrivePost(driver_id=driver_id, current_locX=current_locX, current_locY=current_locY,
+                           arrival_locX=arrival_locX, arrival_locY=arrival_locY, post_time=post_time)
+
+    db.session.add(drive_post)
+    db.session.commit()
+
+    return jsonify(drive_post)
     
 
 @app.route('/api/schedules', methods=['POST', 'GET'])
