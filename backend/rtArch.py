@@ -17,8 +17,15 @@ app.config['SECRET_KEY'] = os.getenv('FLASK_SECRET_KEY')
 db = SQLAlchemy(app)
 admin = Admin(app, name='RollTogether')
 
+@dataclass
 class Rider(db.Model):
   __tablename__ = "rider"
+
+  rider_id: int
+  first_name: str
+  last_initial: str
+  safety_coef: int
+  rider_rating: int
 
   rider_id = db.Column(db.Integer, primary_key=True)
   first_name = db.Column(db.String(80), nullable=False)
@@ -34,18 +41,13 @@ class Rider(db.Model):
   def __repr__(self):
     return '<%r>' % self.first_name + self.last_initial
 
-  def serialize(self):
-    """Return object in json-friendly format"""
-    return {
-      'rider_id'    : self.rider_id,
-      'first_name'  : self.first_name,
-      'last_initial': self.last_initial,
-      'safety_coef' : self.safety_coef,
-      'rider_rating': self.rider_rating
-    }
-
+@dataclass
 class Driver(db.Model):
   __tablename__ = "driver"
+
+  driver_id: int
+  rider_id: int
+  driver_rating: int
 
   driver_id = db.Column(db.Integer, primary_key=True)
   rider_id = db.Column(db.Integer, db.ForeignKey('rider.rider_id'), nullable=False, unique=True)
@@ -57,7 +59,17 @@ class Driver(db.Model):
   def __repr__(self):
     return '<%r>' % self.driver_id
 
+@dataclass
 class DriverVehicles(db.Model):
+  vin_num: str
+  plate_num: str
+  driver_id: int
+  model: str
+  make: str
+  num_seats: int
+  year: int
+  miles: float
+
   vin_num = db.Column(db.String(100), primary_key=True)
   plate_num = db.Column(db.String(20), primary_key=True)
   driver_id = db.Column(db.Integer, db.ForeignKey('driver.driver_id'), nullable=False)
@@ -189,12 +201,63 @@ def ride_posts():
   ride_posts = RidePost.query.all()
   return render_template('ride_posts.html', ride_posts=ride_posts)
 
-@app.route('/api/rides', methods=['GET'])
-def serve_rides():
+@app.route('/api/riders', methods=['POST', 'GET'])
+def serve_riders():
   if (request.method == 'GET'):
 
-    rides = RideRequest.query.all()
-    return jsonify(rides)
+    riders = Rider.query.all()
+    return jsonify(riders)
+
+  elif (request.method == 'POST'):
+    first_name = request.form['first_name']
+    last_initial = request.form['last_initial']
+
+    rider = Rider(first_name=first_name, last_initial=last_initial)
+    db.session.add(rider)
+    db.session.commit()
+
+    return jsonify(rider)
+
+@app.route('/api/drivers', methods=['POST', 'GET'])
+def serve_drivers():
+  if (request.method == 'GET'):
+
+    drivers = Driver.query.all()
+    return jsonify(drivers)
+
+  elif (request.method == 'POST'):
+    rider_id = request.form['rider_id']
+
+    driver = Driver(rider_id=rider_id)
+    db.session.add(driver)
+    db.session.commit()
+
+    return jsonify(driver)
+
+@app.route('/api/vehicles', methods=['POST', 'GET'])
+def serve_vehicles():
+  if (request.method == 'GET'):
+    vehicles = DriverVehicles.query.all()
+    return jsonify(vehicles)
+
+  elif (request.method == 'POST'):
+    vin_num = request.form['vin_num']
+    plate_num = request.form['plate_num']
+    driver_id = request.form['driver_id']
+    model = request.form['model']
+    make = request.form['make']
+    num_seats = request.form['num_seats']
+    year = request.form['year']
+    miles = request.form['miles']
+
+    vehicle = DriverVehicles(vin_num=vin_num, plate_num=plate_num, driver_id=driver_id,
+                             model=model, make=make, num_seats=num_seats, year=year,
+                             miles=miles)
+    db.session.add(vehicle)
+    db.session.commit()
+
+    return jsonify(vehicle)
+    
 
 @app.route('/api/schedules', methods=['POST', 'GET'])
 def schedule():
@@ -219,8 +282,7 @@ def schedule():
     db.session.add(schedule)
     db.session.commit()
 
-    schedules = CommuteSchedule.query.all()
-    return jsonify(schedules)
+    return jsonify(schedule)
 
 # class rideRequests(Resource):
 #   def get
