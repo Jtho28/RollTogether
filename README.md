@@ -15,26 +15,79 @@
   If you're using VScode, it should automatically source the .venv virtual environment whenever you open the RollTogether workspace, so you shouldn't have to source every time
 
 ## Database setup for testing
-  Run the rtArch.py file with .venv sourced with either...
-
-    python rtArch.py
-
-  Or...
+  Run the flask app inside `backend/` with .venv sourced with...
   
     flask --app rtArch run --debug
 
   Now, there should be a file in `instance/` called `rollt.db`. This is the database file, but there is no data in it.
 
-  To populate the database with some test data, close out of the running flask app with `ctrl+C` and run `test_populate.py` with .venv sourced...
+  Now if you run `flask --app rtArch run --debug` again, open your browser and type `http://127.0.0.1:5000/admin` and you should see an admin panel. Here you can add entities as you please and view them without using the api.
 
-    python test_populate.py
+## API
+  The api is defined under the urls starting with `api/`. These endpoints support both GET and PUSH methods.
 
-  Now if you run `python rtArch.py` again, open your browser and type `http://127.0.0.1:5000/` and you should see `Hello, World!`. Make sure the rtArch.py Flask app is still running.
+  If you wish to do some api testing for frontend dev, you can use cURL or a tool like Postman to make requests. Your request body must contain the fields specified in the route within rtArch as I don't know of any other way to get it done.
 
-  To access the Admin panel to see the data in the database, navigate to `http://127.0.0.1:5000/admin/` and you should see the Rider, Driver, RideRequest, and DriverVehicles tabs. Click on them to see the data inside.
+  The api are defined as such, you must include the values in the body of the request for each key in the POST section.
 
-  You should be able to add Riders to the database from the admin panel, however, I can't figure out how to properly add Driver entities from the admin portal.
+  `/api/riders`
+  - GET
+    - Returns existing rider entities
+  - POST
+    - `first_name`
+    - `last_initial`
 
-  If you wish to change the entities or want to test some different data, delete the `rollt.db` file. Then, change the values in the `db_test_dat.sql` under `instances`. I provided some example data so you can understand the syntax. 
-  When you've added the data you want, run `rtArch.py` again and then `test_populate.py` like we did before, and you should see your new data in the admin panel.
+  `/api/drivers`
+  - GET
+    - Returns existing driver entities
+  - POST
+    - `rider_id`
+
+  `/api/vehicles`
+  - GET
+    - Returns existing vehicles
+  - POST
+    - `vin_num`
+    - `plate_num`
+    - `driver_id`
+    - `model`
+    - `make`
+    - `num_seats`
+    - `year`
+    - `miles`
+
+  `/api/ride_requests`
+  - GET
+    - Get ride requests
+  - POST
+    - `rider_id`
+    - `departure_locX`
+    - `departure_locY`
+    - `arrival_locX`
+    - `arrival_locY`
+    - `request_time`
+    - `pick_up_by`
+
+  `/api/drive_posts`
+  - GET
+    - Get drive posts
+  - POST
+    - `driver_id`
+    - `current_locX`
+    - `current_locY`
+    - `arrival_locX`
+    - `arrival_locY`
+    - `post_time`
+
+  `/api/schedules`
+  - GET
+    - Returns existing schedules
+  - POST
+    - `rider_id`
+    - `departure_locX`
+    - `departure_locY`
+    - `arrival_locX`
+    - `arrival_locY`
+    - `departure_time`
+    - `arrival_time`
 
