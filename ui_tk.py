@@ -24,7 +24,7 @@ def post_ride():
 
 def main():
     root = tk.Tk()
-    root.title("Ride Sharing Platform")
+    root.title("RollTogether")
 
     root.geometry("500x400")
 

@@ -201,6 +201,15 @@ def ride_posts():
   ride_posts = RidePost.query.all()
   return render_template('ride_posts.html', ride_posts=ride_posts)
 
+@app.route('/reccommend')
+def recc():
+  from rtLib import rt_pool
+  
+  schedules = CommuteSchedule.query.all()
+  rt_pool(schedules)
+  return jsonify(schedules)
+
+
 @app.route('/api/riders', methods=['POST', 'GET'])
 def serve_riders():
   if (request.method == 'GET'):
