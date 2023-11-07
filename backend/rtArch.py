@@ -26,12 +26,14 @@ class Rider(db.Model):
   last_initial: str
   safety_coef: int
   rider_rating: int
+  phone_num: str
 
   rider_id = db.Column(db.Integer, primary_key=True)
   first_name = db.Column(db.String(80), nullable=False)
   last_initial = db.Column(db.String(4), nullable=False)
   safety_coef = db.Column(db.Integer, nullable = False, default=6)
   rider_rating = db.Column(db.Integer, nullable = True)
+  phone_num = db.Column(db.String(10), nullable=False)
   driver = db.relationship('Driver', backref='rider', uselist=False)
   __table_args__ = (
     CheckConstraint('safety_coef>=1 AND safety_coef<=10', name='safety_coef_ckeck'),
@@ -152,6 +154,9 @@ class CommuteSchedule(db.Model):
     CheckConstraint('departure_locY>=-90.00 AND departure_locY<=90 AND arrival_locY>=-90.00 AND arrival_locY<=90.00')
   )
 
+  def __repr__(self):
+    return f"Rider: {self.rider_id}"
+
 
 # class DriveOffer():
 
@@ -161,7 +166,7 @@ class DriverModelView(ModelView):
 
 class RiderModelView(ModelView):
   column_display_pk = True
-  form_columns = ('first_name', 'last_initial', 'safety_coef', 'rider_rating')
+  form_columns = ('first_name', 'last_initial', 'safety_coef', 'rider_rating', 'phone_num')
 
 class VehiclesModelView(ModelView):
   column_display_pk = True
@@ -201,13 +206,13 @@ def ride_posts():
   ride_posts = RidePost.query.all()
   return render_template('ride_posts.html', ride_posts=ride_posts)
 
-@app.route('/reccommend')
-def recc():
+@app.route('/recommend/<int:rider_id>')
+def rec(rider_id):
   from rtLib import rt_pool
-  
+
   schedules = CommuteSchedule.query.all()
-  rt_pool(schedules)
-  return jsonify(schedules)
+  group = rt_pool(schedules, rider_id=rider_id)
+  return jsonify(group)
 
 
 @app.route('/api/riders', methods=['POST', 'GET'])
@@ -220,8 +225,9 @@ def serve_riders():
   elif (request.method == 'POST'):
     first_name = request.form['first_name']
     last_initial = request.form['last_initial']
+    phone_num = request.form['phone_num']
 
-    rider = Rider(first_name=first_name, last_initial=last_initial)
+    rider = Rider(first_name=first_name, last_initial=last_initial, phone_num=phone_num)
     db.session.add(rider)
     db.session.commit()
 
