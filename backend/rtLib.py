@@ -13,6 +13,23 @@ def rt_pool(sched_list: [CommuteSchedule], rider_id: int):
     time_thresh = timedelta(minutes=7)
     rider = f"Rider: {rider_id}"
 
+    uno_north = {'X': [96.01661, 96.01616],
+                 'Y': [41.25780, 41.25763]}
+    
+    midtown = {'X': [95.96641, 95.95730],
+               'Y': [41.26016, 41.25582]}
+
+    eppley = {'X': [95.91622, 95.87575],
+              'Y': [41.31906, 41.28308]}
+
+
+    regions = {'uno_north': [(96.01661, 96.01616), (41.25780, 41.25763)],
+               'midtown':   [(95.96641, 95.95730), (41.26016, 41.25582)],
+               'eppley':    [(95.91622, 95.87575), (41.31906, 41.28308)],
+               'aksarben':  [(96.02075, 96.00885), (41.24897, 41.23538)],
+              }
+
+
     g = nx.Graph()
 
     for i, sched_i in enumerate(sched_list):
@@ -36,12 +53,27 @@ def rt_pool(sched_list: [CommuteSchedule], rider_id: int):
             arr_time_diff = (sched_i.arrival_time - sched_j.arrival_time)
             # print(arr_time_diff)
 
-            if (dep_distance <= dist_thresh 
-                and arrival_distance <= dist_thresh
-                and dep_time_diff <= time_thresh
-                and arr_time_diff <= time_thresh):
-                print(f"Users {sched_i.rider_id} and {sched_j.rider_id} can ride together")
-                g.add_edge(str(sched_i), str(sched_j))
+
+            for region, boundaries in regions.items():
+                latitude_range, longitude_range = boundaries
+                # print(latitude_range)
+                # print(longitude_range)
+                if (latitude_range[1] <= sched_i.arrival_locX <= latitude_range[0]
+                   and latitude_range[1] <= sched_j.arrival_locX <= latitude_range[0]
+                   and longitude_range[1] <= sched_i.arrival_locY <= longitude_range[0]
+                   and longitude_range[1] <= sched_j.arrival_locY <= longitude_range[0]
+                   and dep_time_diff <= time_thresh
+                   and arr_time_diff <= time_thresh):
+
+                     print(f"Users {sched_i.rider_id} and {sched_j.rider_id} can ride together to {region}")
+                     g.add_edge(str(sched_i), str(sched_j))
+
+            # if (dep_distance <= dist_thresh 
+            #     and arrival_distance <= dist_thresh
+            #     and dep_time_diff <= time_thresh
+            #     and arr_time_diff <= time_thresh):
+            #     print(f"Users {sched_i.rider_id} and {sched_j.rider_id} can ride together")
+            #     g.add_edge(str(sched_i), str(sched_j))
 
 
     print(g.nodes)
@@ -54,6 +86,6 @@ def rt_pool(sched_list: [CommuteSchedule], rider_id: int):
         if rider in clique:
             pos.append(clique)
 
-    print(pos)
+    print(f"Group {pos}")
     return pos
 
