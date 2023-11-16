@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from flask_sqlalchemy import SQLAlchemy
 from rtArch import CommuteSchedule
 
-def rt_pool(sched_list: [CommuteSchedule], rider_id: int):
+def rt_pool(sched_list, rider_id: int):
     """
     Function that will recommend groups of people
     to ride together.
@@ -33,10 +33,21 @@ def rt_pool(sched_list: [CommuteSchedule], rider_id: int):
     g = nx.Graph()
 
     for i, sched_i in enumerate(sched_list):
-        g.add_node(str(sched_i))
+        sched_i = sched_i.tuple()
+        node_part1 = sched_i[0]
+        node_part2 = sched_i[1]
+        sched_i = sched_i[0]
+        print(f"FAAAAAAAART {sched_i}")
+
+        # g.add_node(str(node_part1) + ' ' + str(node_part2))
 
         for j in range(i):
-            sched_j = sched_list[j]
+            sched_j = sched_list[j].tuple()
+            edge_comp1 = sched_j[0]
+            edge_comp2 = sched_j[1]
+            sched_j = sched_j[0]
+
+            print(sched_j)
 
             # print(sched_i)
             # print(sched_j)
@@ -66,7 +77,7 @@ def rt_pool(sched_list: [CommuteSchedule], rider_id: int):
                    and arr_time_diff <= time_thresh):
 
                      print(f"Users {sched_i.rider_id} and {sched_j.rider_id} can ride together to {region}")
-                     g.add_edge(str(sched_i), str(sched_j))
+                     g.add_edge((str(node_part1) + ' ' + str(node_part2)), (str(edge_comp1) + ' ' + str(edge_comp2)))
 
             # if (dep_distance <= dist_thresh 
             #     and arrival_distance <= dist_thresh
@@ -76,15 +87,20 @@ def rt_pool(sched_list: [CommuteSchedule], rider_id: int):
             #     g.add_edge(str(sched_i), str(sched_j))
 
 
-    print(g.nodes)
-    print(g.edges)
+    # print(g.nodes)
+    print(f"DEEEEEBUUUUUUG {g.nodes}")
+    print(f"DEEEEEEBUGGG {g.edges}" )
 
     groups = nx.find_cliques(g)
 
     pos = []
     for clique in groups:
-        if rider in clique:
-            pos.append(clique)
+        print(f"Cliqeu???????? {clique}")
+
+        for ent in clique:
+            print(ent[:8])
+            if rider in ent[:8]:
+                pos.append(clique)
 
     print(f"Group {pos}")
     return pos

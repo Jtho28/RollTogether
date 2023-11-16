@@ -1,5 +1,5 @@
 .venv/
 *.db
 .env/
-./devlog.md
+devlog.md
 __pycache__/

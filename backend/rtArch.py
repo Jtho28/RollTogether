@@ -41,7 +41,7 @@ class Rider(db.Model):
   )
 
   def __repr__(self):
-    return '<%r>' % self.first_name + self.last_initial
+    return self.first_name + ' ' + self.last_initial + ' ' + self.phone_num
 
 @dataclass
 class Driver(db.Model):
@@ -210,7 +210,14 @@ def ride_posts():
 def rec(rider_id):
   from rtLib import rt_pool
 
-  schedules = CommuteSchedule.query.all()
+  schedules = db.session.query(CommuteSchedule, Rider).join(CommuteSchedule).all()
+  print(schedules)
+  # schedules = CommuteSchedule.query.all()
+  # print(schedules)
+  # for row in schedules:
+  #   print(row[0])
+
+
   group = rt_pool(schedules, rider_id=rider_id)
   return jsonify(group)
 
@@ -349,4 +356,4 @@ def schedule():
 #   def get
 
 if __name__ == "__main__":
-  app.run(debug=True)
+  app.run(host='0.0.0.0', debug=True)
