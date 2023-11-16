@@ -1,0 +1,588 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		056359AF2B06930E006F073D /* ui_front_end_roll_together_practiceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056359AE2B06930E006F073D /* ui_front_end_roll_together_practiceApp.swift */; };
+		056359B12B06930E006F073D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056359B02B06930E006F073D /* ContentView.swift */; };
+		056359B32B069311006F073D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 056359B22B069311006F073D /* Assets.xcassets */; };
+		056359B62B069311006F073D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 056359B52B069311006F073D /* Preview Assets.xcassets */; };
+		056359C02B069311006F073D /* ui_front_end_roll_together_practiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056359BF2B069311006F073D /* ui_front_end_roll_together_practiceTests.swift */; };
+		056359CA2B069312006F073D /* ui_front_end_roll_together_practiceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056359C92B069312006F073D /* ui_front_end_roll_together_practiceUITests.swift */; };
+		056359CC2B069312006F073D /* ui_front_end_roll_together_practiceUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056359CB2B069312006F073D /* ui_front_end_roll_together_practiceUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		056359BC2B069311006F073D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 056359A32B06930E006F073D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 056359AA2B06930E006F073D;
+			remoteInfo = "ui front end roll together practice";
+		};
+		056359C62B069312006F073D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 056359A32B06930E006F073D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 056359AA2B06930E006F073D;
+			remoteInfo = "ui front end roll together practice";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		056359AB2B06930E006F073D /* ui front end roll together practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ui front end roll together practice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		056359AE2B06930E006F073D /* ui_front_end_roll_together_practiceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ui_front_end_roll_together_practiceApp.swift; sourceTree = "<group>"; };
+		056359B02B06930E006F073D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		056359B22B069311006F073D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		056359B52B069311006F073D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		056359BB2B069311006F073D /* ui front end roll together practiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ui front end roll together practiceTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		056359BF2B069311006F073D /* ui_front_end_roll_together_practiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ui_front_end_roll_together_practiceTests.swift; sourceTree = "<group>"; };
+		056359C52B069312006F073D /* ui front end roll together practiceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ui front end roll together practiceUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		056359C92B069312006F073D /* ui_front_end_roll_together_practiceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ui_front_end_roll_together_practiceUITests.swift; sourceTree = "<group>"; };
+		056359CB2B069312006F073D /* ui_front_end_roll_together_practiceUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ui_front_end_roll_together_practiceUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		056359A82B06930E006F073D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		056359B82B069311006F073D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		056359C22B069312006F073D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		056359A22B06930E006F073D = {
+			isa = PBXGroup;
+			children = (
+				056359AD2B06930E006F073D /* ui front end roll together practice */,
+				056359BE2B069311006F073D /* ui front end roll together practiceTests */,
+				056359C82B069312006F073D /* ui front end roll together practiceUITests */,
+				056359AC2B06930E006F073D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		056359AC2B06930E006F073D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				056359AB2B06930E006F073D /* ui front end roll together practice.app */,
+				056359BB2B069311006F073D /* ui front end roll together practiceTests.xctest */,
+				056359C52B069312006F073D /* ui front end roll together practiceUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		056359AD2B06930E006F073D /* ui front end roll together practice */ = {
+			isa = PBXGroup;
+			children = (
+				056359AE2B06930E006F073D /* ui_front_end_roll_together_practiceApp.swift */,
+				056359B02B06930E006F073D /* ContentView.swift */,
+				056359B22B069311006F073D /* Assets.xcassets */,
+				056359B42B069311006F073D /* Preview Content */,
+			);
+			path = "ui front end roll together practice";
+			sourceTree = "<group>";
+		};
+		056359B42B069311006F073D /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				056359B52B069311006F073D /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		056359BE2B069311006F073D /* ui front end roll together practiceTests */ = {
+			isa = PBXGroup;
+			children = (
+				056359BF2B069311006F073D /* ui_front_end_roll_together_practiceTests.swift */,
+			);
+			path = "ui front end roll together practiceTests";
+			sourceTree = "<group>";
+		};
+		056359C82B069312006F073D /* ui front end roll together practiceUITests */ = {
+			isa = PBXGroup;
+			children = (
+				056359C92B069312006F073D /* ui_front_end_roll_together_practiceUITests.swift */,
+				056359CB2B069312006F073D /* ui_front_end_roll_together_practiceUITestsLaunchTests.swift */,
+			);
+			path = "ui front end roll together practiceUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		056359AA2B06930E006F073D /* ui front end roll together practice */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 056359CF2B069312006F073D /* Build configuration list for PBXNativeTarget "ui front end roll together practice" */;
+			buildPhases = (
+				056359A72B06930E006F073D /* Sources */,
+				056359A82B06930E006F073D /* Frameworks */,
+				056359A92B06930E006F073D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ui front end roll together practice";
+			productName = "ui front end roll together practice";
+			productReference = 056359AB2B06930E006F073D /* ui front end roll together practice.app */;
+			productType = "com.apple.product-type.application";
+		};
+		056359BA2B069311006F073D /* ui front end roll together practiceTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 056359D22B069312006F073D /* Build configuration list for PBXNativeTarget "ui front end roll together practiceTests" */;
+			buildPhases = (
+				056359B72B069311006F073D /* Sources */,
+				056359B82B069311006F073D /* Frameworks */,
+				056359B92B069311006F073D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				056359BD2B069311006F073D /* PBXTargetDependency */,
+			);
+			name = "ui front end roll together practiceTests";
+			productName = "ui front end roll together practiceTests";
+			productReference = 056359BB2B069311006F073D /* ui front end roll together practiceTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		056359C42B069312006F073D /* ui front end roll together practiceUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 056359D52B069312006F073D /* Build configuration list for PBXNativeTarget "ui front end roll together practiceUITests" */;
+			buildPhases = (
+				056359C12B069312006F073D /* Sources */,
+				056359C22B069312006F073D /* Frameworks */,
+				056359C32B069312006F073D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				056359C72B069312006F073D /* PBXTargetDependency */,
+			);
+			name = "ui front end roll together practiceUITests";
+			productName = "ui front end roll together practiceUITests";
+			productReference = 056359C52B069312006F073D /* ui front end roll together practiceUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		056359A32B06930E006F073D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					056359AA2B06930E006F073D = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					056359BA2B069311006F073D = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 056359AA2B06930E006F073D;
+					};
+					056359C42B069312006F073D = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 056359AA2B06930E006F073D;
+					};
+				};
+			};
+			buildConfigurationList = 056359A62B06930E006F073D /* Build configuration list for PBXProject "ui front end roll together practice" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 056359A22B06930E006F073D;
+			productRefGroup = 056359AC2B06930E006F073D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				056359AA2B06930E006F073D /* ui front end roll together practice */,
+				056359BA2B069311006F073D /* ui front end roll together practiceTests */,
+				056359C42B069312006F073D /* ui front end roll together practiceUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		056359A92B06930E006F073D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				056359B62B069311006F073D /* Preview Assets.xcassets in Resources */,
+				056359B32B069311006F073D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		056359B92B069311006F073D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		056359C32B069312006F073D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		056359A72B06930E006F073D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				056359B12B06930E006F073D /* ContentView.swift in Sources */,
+				056359AF2B06930E006F073D /* ui_front_end_roll_together_practiceApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		056359B72B069311006F073D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				056359C02B069311006F073D /* ui_front_end_roll_together_practiceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		056359C12B069312006F073D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				056359CC2B069312006F073D /* ui_front_end_roll_together_practiceUITestsLaunchTests.swift in Sources */,
+				056359CA2B069312006F073D /* ui_front_end_roll_together_practiceUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		056359BD2B069311006F073D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 056359AA2B06930E006F073D /* ui front end roll together practice */;
+			targetProxy = 056359BC2B069311006F073D /* PBXContainerItemProxy */;
+		};
+		056359C72B069312006F073D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 056359AA2B06930E006F073D /* ui front end roll together practice */;
+			targetProxy = 056359C62B069312006F073D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		056359CD2B069312006F073D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		056359CE2B069312006F073D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		056359D02B069312006F073D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ui front end roll together practice/Preview Content\"";
+				DEVELOPMENT_TEAM = 6HT777DB45;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "jjjjj.ui-front-end-roll-together-practice";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		056359D12B069312006F073D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ui front end roll together practice/Preview Content\"";
+				DEVELOPMENT_TEAM = 6HT777DB45;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "jjjjj.ui-front-end-roll-together-practice";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		056359D32B069312006F073D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6HT777DB45;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "jjjjj.ui-front-end-roll-together-practiceTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ui front end roll together practice.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ui front end roll together practice";
+			};
+			name = Debug;
+		};
+		056359D42B069312006F073D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6HT777DB45;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "jjjjj.ui-front-end-roll-together-practiceTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ui front end roll together practice.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ui front end roll together practice";
+			};
+			name = Release;
+		};
+		056359D62B069312006F073D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6HT777DB45;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "jjjjj.ui-front-end-roll-together-practiceUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "ui front end roll together practice";
+			};
+			name = Debug;
+		};
+		056359D72B069312006F073D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6HT777DB45;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "jjjjj.ui-front-end-roll-together-practiceUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "ui front end roll together practice";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		056359A62B06930E006F073D /* Build configuration list for PBXProject "ui front end roll together practice" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				056359CD2B069312006F073D /* Debug */,
+				056359CE2B069312006F073D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		056359CF2B069312006F073D /* Build configuration list for PBXNativeTarget "ui front end roll together practice" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				056359D02B069312006F073D /* Debug */,
+				056359D12B069312006F073D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		056359D22B069312006F073D /* Build configuration list for PBXNativeTarget "ui front end roll together practiceTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				056359D32B069312006F073D /* Debug */,
+				056359D42B069312006F073D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		056359D52B069312006F073D /* Build configuration list for PBXNativeTarget "ui front end roll together practiceUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				056359D62B069312006F073D /* Debug */,
+				056359D72B069312006F073D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 056359A32B06930E006F073D /* Project object */;
+}
