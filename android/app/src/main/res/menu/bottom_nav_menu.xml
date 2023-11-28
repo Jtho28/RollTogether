@@ -3,19 +3,24 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_create"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_notifications" />
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="@string/title_create" />
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_schedule"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home" />
+        android:title="@string/title_schedule" />
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_recommend"
         android:icon="@android:drawable/ic_menu_search"
-        android:title="@string/title_dashboard" />
+        android:title="@string/title_recommend" />
+
+    <item
+        android:id="@+id/navigation_map"
+        android:icon="@android:drawable/ic_dialog_map"
+        android:title="@string/title_map" />
 
 </menu>
