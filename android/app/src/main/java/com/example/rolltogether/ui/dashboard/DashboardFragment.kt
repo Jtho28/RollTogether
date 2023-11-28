@@ -16,6 +16,8 @@ import okhttp3.Callback
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
+import org.json.JSONArray
+import org.json.JSONObject
 import java.io.IOException
 
 class DashboardFragment : Fragment() {
@@ -64,11 +66,19 @@ class DashboardFragment : Fragment() {
                     response.use {
                         if (!response.isSuccessful) throw IOException("Unexpected code $response")
 
-                        val resp = response.body?.string()
-                        println(resp)
+                        val strResp = response.body?.string()
+                        println(strResp)
 
-                        val lab = view.findViewById<TextView>(R.id.textView)
-                        lab.text = resp
+                        val jsonObject = JSONArray(strResp)
+
+                        var lab = view.findViewById<TextView>(R.id.textView)
+//                        lab.text = strResp
+
+                        var conText = ""
+                        for (i in 0 until jsonObject.length()) {
+                            conText += jsonObject[i].toString() + "\n"
+                        }
+                        lab.text = conText
 
                     }
                 }
