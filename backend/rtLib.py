@@ -37,7 +37,6 @@ def rt_pool(sched_list, rider_id: int):
         node_part1 = sched_i[0]
         node_part2 = sched_i[1]
         sched_i = sched_i[0]
-        print(f"FAAAAAAAART {sched_i}")
 
         # g.add_node(str(node_part1) + ' ' + str(node_part2))
 
@@ -87,15 +86,11 @@ def rt_pool(sched_list, rider_id: int):
             #     g.add_edge(str(sched_i), str(sched_j))
 
 
-    # print(g.nodes)
-    print(f"DEEEEEBUUUUUUG {g.nodes}")
-    print(f"DEEEEEEBUGGG {g.edges}" )
 
     groups = nx.find_cliques(g)
 
     pos = []
     for clique in groups:
-        print(f"Cliqeu???????? {clique}")
 
         for ent in clique:
             print(ent[:8])

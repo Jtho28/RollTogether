@@ -219,7 +219,8 @@ def rec(rider_id):
 
 
   group = rt_pool(schedules, rider_id=rider_id)
-  return jsonify(group)
+  # return jsonify(group)
+  return group[0]
 
 
 @app.route('/api/riders', methods=['POST', 'GET'])
