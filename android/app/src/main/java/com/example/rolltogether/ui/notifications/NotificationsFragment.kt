@@ -60,7 +60,7 @@ class NotificationsFragment : Fragment() {
                 .build()
 
             val request = Request.Builder()
-                .url("http://192.168.0.232:5000/api/riders")
+                .url("https://roll-together-3nzis7ktnq-uc.a.run.app/api/riders")
                 .post(body)
                 .build()
 

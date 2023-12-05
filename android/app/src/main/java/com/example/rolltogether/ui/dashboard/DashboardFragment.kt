@@ -54,7 +54,7 @@ class DashboardFragment : Fragment() {
             val riderId = view.findViewById<EditText>(R.id.riderID)
 
             val request = Request.Builder()
-                .url("http://192.168.0.232:5000/recommend/" + riderId.text.toString())
+                .url("https://roll-together-3nzis7ktnq-uc.a.run.app/recommend/" + riderId.text.toString())
                 .build()
 
             client.newCall(request).enqueue(object : Callback {

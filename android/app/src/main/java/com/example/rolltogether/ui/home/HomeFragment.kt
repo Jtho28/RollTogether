@@ -100,7 +100,7 @@ class HomeFragment : Fragment() {
             println(riderId.text.toString())
 
             val request = Request.Builder()
-                .url("http://192.168.0.232:5000/api/schedules")
+                .url("https://roll-together-3nzis7ktnq-uc.a.run.app/api/schedules")
                 .post(body)
                 .build()
 

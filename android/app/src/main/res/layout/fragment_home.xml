@@ -8,12 +8,12 @@
 
     <EditText
         android:id="@+id/arrival_date"
-        android:layout_width="272dp"
-        android:layout_height="77dp"
+        android:layout_width="370dp"
+        android:layout_height="80dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="368dp"
         android:ems="10"
-        android:hint="Arrival Date/Time"
+        android:hint="Arrival Date/Time (YYYY-DD-MMTHH:MM:SS)"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -68,12 +68,12 @@
 
     <EditText
         android:id="@+id/departure_date"
-        android:layout_width="270dp"
-        android:layout_height="80dp"
+        android:layout_width="379dp"
+        android:layout_height="75dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="276dp"
         android:ems="10"
-        android:hint="Departure Date/Time"
+        android:hint="Departure Date/Time (YYYY-DD-MMTHH:MM:SS)"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
